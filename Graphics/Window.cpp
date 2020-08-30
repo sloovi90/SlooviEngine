@@ -120,7 +120,7 @@ Window::Window(const char* windowName, int width, int height, WindowPtr parent, 
 	//set callback to window in case of resize
 	glfwSetFramebufferSizeCallback(windowHandler, &Window::Framebuffer_size_callback);
 	glfwSetWindowSizeCallback(windowHandler, &Window::Framebuffer_size_callback);
-	//glfwSwapInterval(1);
+	glfwSwapInterval(1);
 
 	//loads with glad the opengl function pointers according to opengl version
 	//after this we can use opengl functions safely
@@ -137,7 +137,7 @@ Window::Window(const char* windowName, int width, int height, WindowPtr parent, 
 	glDepthMask(GL_TRUE);
 
 	glCullFace(GL_BACK);
-	glDisable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 
 	SetKeyboardHandler(&Window::KeyboardCallback);
 	winCount++;
@@ -217,7 +217,9 @@ void Window::Refresh()
 		glfwSwapBuffers(windowHandler);
 		//poll event like mouse/keyboard
 		glfwPollEvents();
+
 	}
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Window::SetKeyboardHandler(GLFWkeyfun f)

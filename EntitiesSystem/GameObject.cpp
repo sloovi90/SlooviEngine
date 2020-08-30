@@ -42,3 +42,11 @@ GameObjectPtr GameObject::Clone()
 {
 	return GameObjectPtr();
 }
+
+void GameObject::AddComponent(Component component)
+{
+
+	if (component != nullptr)
+		m_vComponents.push_back(component);
+
+}

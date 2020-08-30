@@ -34,6 +34,8 @@ public:
 	GameObjectPtr Clone();
 
 
+	void AddComponent(Component component);
+
 
 
 

@@ -5,7 +5,8 @@
 Model::Model(const std::string& name, const std::vector<Vertex> vertices, const std::vector<unsigned int> indices, ColoringType type) :
 	modelMatrix(1.f),
 	coloringType(type),
-	isMainTexPartial(false)
+	isMainTexPartial(false),
+	modelPos(glm::vec3(0))
 {
 	modelName = name;
 	this->vertices = vertices;
@@ -33,10 +34,10 @@ void Model::Draw(const CameraPtr& cam)
 	if (modelMaterial) {
 
 		auto prog = modelMaterial->GetDrawingProgram();
-		auto mvp = cam->GetCameraViewProjectionMatrix() * modelMatrix;
+ 		auto mvp = cam->GetCameraViewProjectionMatrix() * modelMatrix;
 		prog->Start();
 		bool useTextures = false;
-		if (coloringType == ColoringType::None)
+ 		if (coloringType == ColoringType::None)
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		else {
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -49,13 +50,6 @@ void Model::Draw(const CameraPtr& cam)
 				mainTexture->BindTextureToUnit(0);
 				prog->SetUniformInt("MainTexture", 0);
 				prog->SetUniformInt("useTextures", 1);
-				if (isMainTexPartial) {
-					prog->SetUniformInt("isMainTexPartial", 1);
-					prog->SetUniformFloat("mainTexZoneCover.minX",mainTexCoverZone.minX );
-					prog->SetUniformFloat("mainTexZoneCover.maxX", mainTexCoverZone.maxX);
-					prog->SetUniformFloat("mainTexZoneCover.minY", mainTexCoverZone.minY);
-					prog->SetUniformFloat("mainTexZoneCover.maxY", mainTexCoverZone.maxY);
-				}
 			}
 		}
 		else {
@@ -135,18 +129,6 @@ void Model::SetMainTexture(Texture2DPtr mainTexture)
 	this->mainTexture = mainTexture;
 }
 
-void Model::SetPartialMainTexture(Texture2DPtr partMainTexture)
-{
-	if (partMainTexture) {
-		isMainTexPartial = true;
-		mainTexture = partMainTexture;
-	}
-}
-
-void Model::SetTextureRect(TexRect texCoverZone)
-{
-	mainTexCoverZone = texCoverZone;
-}
 
 void Model::SetActive(bool newStatus)
 {

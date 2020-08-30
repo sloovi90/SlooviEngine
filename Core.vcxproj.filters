@@ -14,12 +14,6 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{0272a7d6-f875-430f-9c82-39117287dd92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="OVMedCamera">
-      <UniqueIdentifier>{115dbd39-ab8e-4682-9f8e-3de2b65b0829}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Algorithms">
-      <UniqueIdentifier>{b644a280-2ed8-4243-9a62-09f5d7fbfba8}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp">
@@ -96,9 +90,6 @@
     <ClInclude Include="Graphics\Window.h" />
     <ClInclude Include="Graphics\GLComputeProgram.h" />
     <ClInclude Include="Graphics\GLBufferT.h" />
-    <ClInclude Include="Include\glad\glad.h" />
-    <ClInclude Include="Include\GLFW\glfw3.h" />
-    <ClInclude Include="Include\GLFW\glfw3native.h" />
     <ClInclude Include="EntitiesSystem\GameObject.h" />
     <ClInclude Include="EntitiesSystem\Transform.h" />
     <ClInclude Include="EntitiesSystem\IComponent.h" />

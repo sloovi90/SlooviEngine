@@ -42,8 +42,6 @@ public:
 	const MaterialPtr GetModelMaterial();
 	void SetModelColoring(ColoringType colorType);
 	void SetMainTexture(Texture2DPtr mainTexture);
-	void SetPartialMainTexture(Texture2DPtr partMainTexture);
-	void SetTextureRect(TexRect texCoverZone);
 	void SetActive(bool newStatus);
 private:
 	Model();

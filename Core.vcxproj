@@ -23,7 +23,7 @@
     <ProjectGuid>{95365254-85E0-454F-B85A-457409AEE43C}</ProjectGuid>
     <RootNamespace>Core</RootNamespace>
     <ProjectName>Core</ProjectName>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -79,7 +79,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)/Output_Debug/</OutDir>
     <IncludePath>E:\Include;$(IncludePath)$(ProjectDir)\Include;</IncludePath>
-    <LibraryPath>$(ProjectDir)\Libs\glfw;</LibraryPath>
+    <LibraryPath>$(ProjectDir)\Libs\glfw;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);</LibraryPath>
     <IntDir>$(SolutionDir)/Output_Debug/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -113,6 +113,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Libs\glfw;%(AdditionalLibraryDirectories);</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -183,9 +184,6 @@
     <ClInclude Include="Graphics\Scene.h" />
     <ClInclude Include="Graphics\Texture2D.h" />
     <ClInclude Include="Graphics\Window.h" />
-    <ClInclude Include="Include\glad\glad.h" />
-    <ClInclude Include="Include\GLFW\glfw3.h" />
-    <ClInclude Include="Include\GLFW\glfw3native.h" />
     <ClInclude Include="Tools\ObjReader.h" />
   </ItemGroup>
   <ItemGroup>
